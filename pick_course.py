@@ -60,12 +60,13 @@ class PickCourse(object):
         while(True):
             id = self.add(course_id=course_id)
             result = self.add_result(id=id)
-            if(result['success'] == False ):
-                print("课程:"+ course_id+ "选择失败!")
-                time.sleep(0.5)  # 每隔0.5秒发起一次选课请求
-            elif(result['success'] == True):
-                print("课程:"+ course_id+ "选择成功!")
-                break
+            if result is not None:
+                if(result['success'] == False ):
+                    print("课程:"+ course_id+ "选择失败!")
+                    time.sleep(0.5)  # 每隔0.5秒发起一次选课请求
+                elif(result['success'] == True):
+                    print("课程:"+ course_id+ "选择成功!")
+                    break
 
 if __name__ == "__main__":
     pick_course = PickCourse()
